@@ -1,0 +1,14 @@
+<h1> Product List</h1>
+<div class=" border form-inline">
+  <div class="form-group text-center" *ngFor="let product of products;let id = index">
+
+    <img src="{{product.url}}" height="300">
+    <h2 style="text-center">{{ product.title }}</h2>
+    <h4>${{ product.price }}</h4>
+
+    <a [routerLink]="[id,'edit']" class="btn btn-info" role="button">Edit</a>
+    <!-- <a [routerLink]="[id,'delete']" class="btn btn-warning" role="button">Delete</a> -->
+    <a class="btn btn-danger text-white" (click)="remove(id)" role="button">Delete</a>
+  </div>
+
+</div>

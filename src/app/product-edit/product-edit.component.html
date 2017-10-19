@@ -1,0 +1,22 @@
+<h1> Product Edit</h1>
+<div class=" border row">
+  <form (submit)="onSubmit(formdata)" name="formdata" #formdata='ngForm'>
+    <h4 class="col">*Title:
+    <input type="text" class=" form-control" name="title" required minlength="4" maxlength="24" [(ngModel)]="product.title" #title='ngModel' /></h4>
+    <p class="text-danger" *ngIf="!title.valid && title.dirty">Title is required (4 char min) </p>
+    <h4 class="col">*Price:
+        <input type="number" class=" form-control" name="price" required min="0.01" step="0.01" max="2500" value="25.67" [(ngModel)]="product.price" #price='ngModel' /></h4>
+    <p class="text-danger" *ngIf="!price.valid && price.dirty">Price is required</p>
+    <h4 class="col">*Image Url:
+        <input type="url" required class=" form-control" name="url" [(ngModel)]="product.url" #url='ngModel' /></h4>
+    <p class="text-danger" *ngIf="!url.valid && url.dirty">URL is required</p>
+    <br>
+
+    <!-- <button type="button" *ngIf="!formdata.valid" class=" btn btn-primary disabled">Submit</button> -->
+    <button type="submit col-2" [disabled]="!formdata.valid" class="btn btn-primary">Update</button>
+    <p class="text-danger col-2" *ngIf="!formdata.valid">Please fill out all fields</p>
+    <p class="text-success col-2" *ngIf="formdata.valid">Form Valid! </p>
+    <a class="btn btn-danger col-2 text-white" (click)="remove()" role="button">Delete</a>
+  </form>
+
+</div>
